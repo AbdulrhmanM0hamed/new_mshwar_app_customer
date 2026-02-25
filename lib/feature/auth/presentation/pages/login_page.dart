@@ -7,7 +7,6 @@ import 'package:new_mshwar_app_customer/core/constants/font_manger.dart';
 import 'package:new_mshwar_app_customer/core/utils/extensions/context_ext.dart';
 import 'package:new_mshwar_app_customer/core/utils/validators.dart';
 import 'package:new_mshwar_app_customer/core/widgets/app_button.dart';
-import 'package:new_mshwar_app_customer/core/widgets/app_text_field.dart';
 import 'package:new_mshwar_app_customer/core/widgets/app_snackbar.dart';
 import 'package:new_mshwar_app_customer/core/widgets/loading/loading_overlay.dart';
 import 'package:new_mshwar_app_customer/core/routing/routes.dart';
@@ -78,16 +77,16 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // ── Title ──
+                  // ── Welcome Title ──
                   Text(
                     l.login,
                     style: getBoldStyle(
-                      fontSize: FontSize.size24,
-                      color: AppColors.primaryDark,
+                      fontSize: FontSize.size28,
+                      color: AppColors.textPrimary,
                       fontFamily: FontConstant.cairo,
                     ),
                   ),
-                  const SizedBox(height: Spacing.xs),
+                  const SizedBox(height: 4),
                   Text(
                     l.loginSubtitle,
                     style: getRegularStyle(
@@ -96,43 +95,44 @@ class _LoginPageState extends State<LoginPage> {
                       fontFamily: FontConstant.cairo,
                     ),
                   ),
-                  const SizedBox(height: Spacing.xxl),
+                  const SizedBox(height: 28),
 
-                  // ── Email ──
-                  AppTextField(
+                  // ── Email Field ──
+                  _buildLabel(l.email),
+                  const SizedBox(height: 8),
+                  _StyledTextField(
                     controller: _emailController,
-                    label: l.email,
                     hint: l.emailHint,
+                    icon: Icons.alternate_email_rounded,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
-                    prefixIcon: const Icon(Icons.email_outlined, size: 20),
                     validator: Validators.email,
                   ),
-                  const SizedBox(height: Spacing.base),
+                  const SizedBox(height: 20),
 
-                  // ── Password ──
-                  AppTextField(
+                  // ── Password Field ──
+                  _buildLabel(l.password),
+                  const SizedBox(height: 8),
+                  _StyledTextField(
                     controller: _passwordController,
-                    label: l.password,
                     hint: l.passwordHint,
+                    icon: Icons.lock_outline_rounded,
                     obscureText: state.obscurePassword,
                     textInputAction: TextInputAction.done,
-                    prefixIcon: const Icon(Icons.lock_outlined, size: 20),
-                    suffixIcon: IconButton(
-                      onPressed: () =>
+                    validator: Validators.password,
+                    onSubmitted: (_) => _onLogin(),
+                    suffixIcon: GestureDetector(
+                      onTap: () =>
                           context.read<AuthCubit>().togglePasswordVisibility(),
-                      icon: Icon(
+                      child: Icon(
                         state.obscurePassword
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility_outlined,
+                            ? Icons.visibility_off_rounded
+                            : Icons.visibility_rounded,
                         size: 20,
                         color: AppColors.textHint,
                       ),
                     ),
-                    validator: Validators.password,
-                    onSubmitted: (_) => _onLogin(),
                   ),
-                  const SizedBox(height: Spacing.sm),
 
                   // ── Forgot password ──
                   Align(
@@ -141,6 +141,12 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.pushNamed(context, Routes.forgotPassword);
                       },
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 6,
+                        ),
+                      ),
                       child: Text(
                         l.forgotPassword,
                         style: getSemiBoldStyle(
@@ -151,25 +157,22 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: Spacing.lg),
+                  const SizedBox(height: 16),
 
                   // ── Login button ──
-                  AppButton.filled(
-                    text: l.login,
-                    isLoading: state.isLoading,
-                    onPressed: _onLogin,
-                  ),
-                  const SizedBox(height: Spacing.base),
+                  AppButton.filled(text: l.login, onPressed: _onLogin),
+                  const SizedBox(height: 20),
+
+                  // ── OR Divider ──
+                  _buildOrDivider(l.or_),
+                  const SizedBox(height: 20),
 
                   // ── Phone login ──
-                  AppButton.outlined(
-                    text: l.loginWithPhone,
-                    icon: Icons.phone_outlined,
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.otp);
-                    },
+                  _PhoneLoginButton(
+                    label: l.loginWithPhone,
+                    onTap: () => Navigator.pushNamed(context, Routes.otp),
                   ),
-                  const SizedBox(height: Spacing.xl),
+                  const SizedBox(height: 28),
 
                   // ── Register link ──
                   Row(
@@ -187,6 +190,9 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           Navigator.pushNamed(context, Routes.register);
                         },
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                        ),
                         child: Text(
                           l.registerNow,
                           style: getBoldStyle(
@@ -204,6 +210,314 @@ class _LoginPageState extends State<LoginPage> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildLabel(String text) {
+    return Text(
+      text,
+      style: getSemiBoldStyle(
+        fontSize: FontSize.size14,
+        color: AppColors.textPrimary,
+        fontFamily: FontConstant.cairo,
+      ),
+    );
+  }
+
+  Widget _buildOrDivider(String text) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 1.2,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  AppColors.border.withValues(alpha: 0.6),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF0F0F0),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              text,
+              style: getRegularStyle(
+                fontSize: FontSize.size12,
+                color: AppColors.textHint,
+                fontFamily: FontConstant.cairo,
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            height: 1.2,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.border.withValues(alpha: 0.6),
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ██  STYLED TEXT FIELD — Premium Input Design  ██
+// ═══════════════════════════════════════════════════════════════
+class _StyledTextField extends StatefulWidget {
+  final TextEditingController controller;
+  final String hint;
+  final IconData icon;
+  final bool obscureText;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
+  final void Function(String)? onSubmitted;
+  final Widget? suffixIcon;
+
+  const _StyledTextField({
+    required this.controller,
+    required this.hint,
+    required this.icon,
+    this.obscureText = false,
+    this.keyboardType,
+    this.textInputAction,
+    this.validator,
+    this.onSubmitted,
+    this.suffixIcon,
+  });
+
+  @override
+  State<_StyledTextField> createState() => _StyledTextFieldState();
+}
+
+class _StyledTextFieldState extends State<_StyledTextField> {
+  bool _hasFocus = false;
+  String? _errorText;
+
+  static final _noBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(14),
+    borderSide: BorderSide.none,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final hasText = widget.controller.text.isNotEmpty;
+    final hasError = _errorText != null;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // ── Input Container ──
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: _hasFocus
+                ? AppColors.primary.withValues(alpha: 0.03)
+                : const Color(0xFFF8F9FB),
+            border: Border.all(
+              color: hasError
+                  ? AppColors.error.withValues(alpha: 0.6)
+                  : _hasFocus
+                  ? AppColors.primary.withValues(alpha: 0.5)
+                  : const Color(0xFFE8ECF0),
+              width: _hasFocus || hasError ? 1.8 : 1.2,
+            ),
+          ),
+          child: Focus(
+            onFocusChange: (f) => setState(() => _hasFocus = f),
+            child: TextFormField(
+              controller: widget.controller,
+              obscureText: widget.obscureText,
+              keyboardType: widget.keyboardType,
+              textInputAction: widget.textInputAction,
+              validator: (value) {
+                final error = widget.validator?.call(value);
+                // Update external error after frame
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (mounted) setState(() => _errorText = error);
+                });
+                return error == null ? null : '';
+              },
+              onFieldSubmitted: widget.onSubmitted,
+              onChanged: (_) {
+                if (_errorText != null) {
+                  setState(() => _errorText = null);
+                }
+                setState(() {});
+              },
+              style: getRegularStyle(
+                fontSize: FontSize.size15,
+                color: AppColors.textPrimary,
+                fontFamily: FontConstant.cairo,
+              ),
+              decoration: InputDecoration(
+                hintText: widget.hint,
+                hintStyle: getRegularStyle(
+                  fontSize: FontSize.size14,
+                  color: AppColors.textHint,
+                  fontFamily: FontConstant.cairo,
+                ),
+                prefixIcon: Container(
+                  width: 48,
+                  alignment: Alignment.center,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    width: 38,
+                    height: 38,
+                    decoration: BoxDecoration(
+                      color: _hasFocus || hasText
+                          ? AppColors.primary.withValues(alpha: 0.12)
+                          : const Color(0xFFEEEFF2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      widget.icon,
+                      size: 19,
+                      color: _hasFocus || hasText
+                          ? AppColors.primary
+                          : AppColors.textHint,
+                    ),
+                  ),
+                ),
+                suffixIcon: widget.suffixIcon != null
+                    ? Padding(
+                        padding: const EdgeInsetsDirectional.only(end: 12),
+                        child: widget.suffixIcon,
+                      )
+                    : null,
+                suffixIconConstraints: const BoxConstraints(
+                  minWidth: 40,
+                  minHeight: 40,
+                ),
+                filled: false,
+                border: _noBorder,
+                enabledBorder: _noBorder,
+                focusedBorder: _noBorder,
+                errorBorder: _noBorder,
+                focusedErrorBorder: _noBorder,
+                disabledBorder: _noBorder,
+                // Hide the built-in error text (we show it outside)
+                errorStyle: const TextStyle(
+                  fontSize: 0,
+                  height: 0,
+                  color: Colors.transparent,
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        // ── External Error Text ──
+        if (hasError)
+          Padding(
+            padding: const EdgeInsetsDirectional.only(start: 8, top: 6),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.error_outline_rounded,
+                  size: 14,
+                  color: AppColors.error,
+                ),
+                const SizedBox(width: 4),
+                Expanded(
+                  child: Text(
+                    _errorText!,
+                    style: getRegularStyle(
+                      fontSize: FontSize.size12,
+                      color: AppColors.error,
+                      fontFamily: FontConstant.cairo,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ██  PHONE LOGIN BUTTON  ██
+// ═══════════════════════════════════════════════════════════════
+class _PhoneLoginButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+
+  const _PhoneLoginButton({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(14),
+        child: Container(
+          height: Spacing.buttonHeight,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: AppColors.primary.withValues(alpha: 0.25),
+              width: 1.5,
+            ),
+            gradient: LinearGradient(
+              colors: [
+                AppColors.primary.withValues(alpha: 0.04),
+                AppColors.primary.withValues(alpha: 0.08),
+              ],
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 34,
+                height: 34,
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(9),
+                ),
+                child: const Icon(
+                  Icons.phone_rounded,
+                  size: 18,
+                  color: AppColors.primary,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                label,
+                style: getSemiBoldStyle(
+                  fontSize: FontSize.size14,
+                  color: AppColors.primary,
+                  fontFamily: FontConstant.cairo,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

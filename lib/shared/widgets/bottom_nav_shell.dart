@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:new_mshwar_app_customer/core/theme/colors.dart';
 import 'package:new_mshwar_app_customer/core/utils/extensions/context_ext.dart';
+import 'package:new_mshwar_app_customer/core/storage/preferences.dart';
+import 'package:new_mshwar_app_customer/core/routing/routes.dart';
 import 'package:new_mshwar_app_customer/feature/home/presentation/pages/tab_pages.dart';
 
 /// ─────────────────────────────────────────────────────────────
@@ -55,6 +57,24 @@ class _BottomNavShellState extends State<BottomNavShell>
       backgroundColor: AppColors.background,
       body: IndexedStack(index: _currentIndex, children: _pages),
       extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 16.0),
+        child: FloatingActionButton.small(
+          onPressed: () async {
+            await Preferences.logout();
+            if (context.mounted) {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                Routes.login,
+                (route) => false,
+              );
+            }
+          },
+          backgroundColor: Colors.redAccent,
+          child: const Icon(Icons.logout, color: Colors.white),
+        ),
+      ),
       bottomNavigationBar: _buildFloatingNavBar(),
     );
   }
