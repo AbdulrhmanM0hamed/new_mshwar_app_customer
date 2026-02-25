@@ -1,0 +1,42 @@
+﻿[INFO] Generating build script...
+[INFO] Generating build script completed, took 234ms
+
+[INFO] Precompiling build script......
+[WARNING] /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:697:32: Error: Final variable 'mapperCode' must be assigned before it can be used.
+                        .call([mapperCode])
+                               ^^^^^^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:781:38: Error: Final variable 'mapperCode' must be assigned before it can be used.
+                              .call([mapperCode])
+                                     ^^^^^^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:799:34: Error: Final variable 'mapperCode' must be assigned before it can be used.
+                          .call([mapperCode]),
+                                 ^^^^^^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:848:40: Error: Final variable 'mapperCode' must be assigned before it can be used.
+                                .call([mapperCode])
+                                       ^^^^^^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:867:34: Error: Final variable 'mapperCode' must be assigned before it can be used.
+                          .call([mapperCode]),
+                                 ^^^^^^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:1010:32: Error: Non-nullable variable 'mapperCode' must be assigned before it can be used.
+                    whenFalse: mapperCode,
+                               ^^^^^^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:1525:54: Error: Final variable 'value' must be assigned before it can be used.
+      return MapEntry(literalString(key, raw: true), value);
+                                                     ^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:1573:7: Error: Final variable 'value' must be assigned before it can be used.
+      value.accept(emitter, buffer);
+      ^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:2356:7: Error: Final variable 'value' must be assigned before it can be used.
+      value.accept(emitter, buffer);
+      ^^^^^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:2366:8: Error: A non-null value must be returned since the return type 'bool' doesn't allow null.
+  bool _missingToJson(ClassElement ele) {
+       ^
+/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-8.2.1/lib/src/generator.dart:2378:8: Error: A non-null value must be returned since the return type 'bool' doesn't allow null.
+  bool _missingSerialize(CompilationUnitElement ele, DartType type) {
+       ^
+[INFO] Precompiling build script... completed, took 580ms
+
+[SEVERE] Failed to precompile build script .dart_tool/build/entrypoint/build.dart.
+This is likely caused by a misconfigured builder definition.
+

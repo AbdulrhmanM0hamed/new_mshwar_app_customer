@@ -1,0 +1,58 @@
+﻿  Generating the build script.
+  Compiling the build script.
+W /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:852:38: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+              switch (clientAnnotation.parser) {
+                                       ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:915:38: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+              switch (clientAnnotation.parser) {
+                                       ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:992:38: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+              switch (clientAnnotation.parser) {
+                                       ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:1134:36: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+            switch (clientAnnotation.parser) {
+                                     ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:1690:34: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+          switch (clientAnnotation.parser) {
+                                   ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:1741:34: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+          switch (clientAnnotation.parser) {
+                                   ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:1859:34: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+          switch (clientAnnotation.parser) {
+                                   ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:1995:38: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+              switch (clientAnnotation.parser) {
+                                       ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:2699:34: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+          switch (clientAnnotation.parser) {
+                                   ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:2730:30: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+      switch (clientAnnotation.parser) {
+                               ^
+  /C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit_generator-9.7.0/lib/src/generator.dart:2743:30: Error: The type 'Parser' is not exhaustively matched by the switch cases since it doesn't match 'Parser.DartMappable'.
+   - 'Parser' is from 'package:retrofit/http.dart' ('/C:/Users/A%20B%20D%20O/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.9.2/lib/http.dart').
+  Try adding a default case or cases that match 'Parser.DartMappable'.
+      switch (clientAnnotation.parser) {
+                               ^
+E Failed to compile build script. Check builder definitions and generated script .dart_tool/build/entrypoint/build.dart.
